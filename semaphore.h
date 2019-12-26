@@ -9,8 +9,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define SEMKEY 1;
-#define SHKEY 2;
+#define SEMKEY 1
+#define SHKEY 2
 
 int start();
 int create();
