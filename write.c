@@ -1,6 +1,8 @@
 #include "semaphore.h"
 
-int semd; shmd; fd;
+int semd; 
+int shmd; 
+int fd;
 struct sembuf sb;
 
 int main(){

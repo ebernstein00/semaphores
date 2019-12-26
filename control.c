@@ -7,7 +7,9 @@ union semun {
 } semu;
 
 char cmdflag[10];
-int fd; semd; shmd;
+int fd; 
+int semd; 
+int shmd;
 struct sembuf sb;
 
 int main(int argc, char *argv[]){
