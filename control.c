@@ -43,7 +43,7 @@ int create(){
     	printf("Error: %s\n", strerror(errno));
     	return -1;
     }
-    printf("Shared memory created successfully...\n")
+    printf("Shared memory created successfully...\n");
 
     //Create file...
     fd = open("semaphone.txt", O_CREAT | O_RDWR | O_TRUNC, 0644);
