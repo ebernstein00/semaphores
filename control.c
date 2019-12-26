@@ -67,7 +67,7 @@ int removes(){
 		return -1;
 	}
 	printf("Trying to get in...\n");
-	semop(semd, &sb, 1);
+	//semop(semd, &sb, 1);
 
 	//Access shared memory...
 	shmd = shmget(SHKEY, sizeof(char*), 0);

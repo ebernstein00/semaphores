@@ -18,7 +18,7 @@ int start(){
 		return -1;
 	}
 	printf("Trying to get in...\n");
-	semop(semd, &sb, 1);
+	//semop(semd, &sb, 1);
 
 	//Opening shared memory...
 	shmd = shmget(SHKEY, sizeof(char*), 0);
