@@ -14,15 +14,15 @@ int main(int argc, char *argv[]){
 	semu.val = 1;
 	sb.sem_num = 0;
 	sb.sem_op = -1;
-	strcpy(flag, argv[1]);
+	strcpy(cmdflag, argv[1]);
 	start();
 	return 0;
 }
 
 void start(){
 	if (strcmp(cmdflag, "-c") == 0) create();
-   	else if (strcmp(flag, "-v") == 0) view();
-	else if (strcmp(flag, "-r") == 0) remove();
+   	else if (strcmp(cmdflag, "-v") == 0) view();
+	else if (strcmp(cmdflag, "-r") == 0) remove();
 	else printf("Flag not recognized\nValid tags include:\n-c\n-v\n-r\n");
 }
 
@@ -117,7 +117,7 @@ int view(){
 		printf("File can't be opened\n");
 		return -1;
 	}
-	printf("The story so far...\n")
+	printf("The story so far...\n");
 
 	//Print file character by character...
 	ch = fgetc(fptr);
