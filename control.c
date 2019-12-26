@@ -7,7 +7,7 @@ union semun {
 } semu;
 
 char cmdflag[10];
-int fd; sema; sharmem;
+int fd; semd; shmd;
 struct sembuf sb;
 
 int main(int argc, char *argv[]){
@@ -28,17 +28,17 @@ void start(){
 
 int create(){
 	//Create semaphore...
-	sema = semget(SEMAKEY, 1, IPC_CREAT | 0644);
-	if (sema < 0){
+	semd = semget(SEMKEY, 1, IPC_CREAT | 0644);
+	if (semd < 0){
     	printf("Error: %s\n", strerror(errno));
     	return -1;
     }
-    semctl(sema, 0, SETVAL, semu);
+    semctl(semd, 0, SETVAL, semu);
     printf("Semaphore created successfully...\n");
 
     //Create shared memory...
-    sharmem = shmget(SHARKEY, sizeof(char*), IPC_CREAT | 0644);
-    if (sharmem < 0){
+    shmd = shmget(SHKEY, sizeof(char*), IPC_CREAT | 0644);
+    if (shmd < 0){
     	printf("Error: %s\n", strerror(errno));
     	return -1;
     }
@@ -58,17 +58,17 @@ int create(){
 
 int remove(){
 	//Checking semaphore...
-	sema = semget(SEMAKEY, 1, 0);
-	if (sema < -1){
+	semd = semget(SEMKEY, 1, 0);
+	if (semd < -1){
 		printf("Error: %s\n", strerror(errno));
 		return -1;
 	}
 	printf("Trying to get in...\n");
-	semop(sema, &sb, 1);
+	semop(semd, &sb, 1);
 
 	//Access shared memory...
-	sharmem = shmget(SHARKEY, sizeof(char*), 0);
-	if (sharmem < 0){
+	shmd = shmget(SHKEY, sizeof(char*), 0);
+	if (shmd < 0){
 		printf("Error: %s\n", strerror(errno));
 		return -1;
 	}
@@ -93,7 +93,7 @@ int remove(){
 	*/
 
 	//Remove shared memory...
-	shmctl(sharmem, IPC_RMID, 0);
+	shmctl(shmd, IPC_RMID, 0);
 	printf("Shared memory removed successfully...\n");
 
 	//Remove file...
@@ -101,7 +101,7 @@ int remove(){
 	printf("File removed successfully...\n");
 
 	//Remove semaphore...
-	semctl(sema, IPC_RMID, 0);
+	semctl(semd, IPC_RMID, 0);
 	printf("Semaphore removed successfully...\n");
 
 	return 0;

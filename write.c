@@ -1,6 +1,6 @@
 #include "semaphore.h"
 
-int sema; sharmem; fd;
+int semd; shmd; fd;
 struct sembuf sb;
 
 int main(){
@@ -10,24 +10,24 @@ int main(){
 
 int start(){
 	//Checking semaphore...
-	int sema = semget(SEMAKEY, 1, 0);
-	if (sema < 0){
+	int semd = semget(SEMKEY, 1, 0);
+	if (semd < 0){
 		printf("Error: %s\n", strerror(errno));
 		return -1;
 	}
 	printf("Trying to get in...\n");
-	semop(sema, &sb, 1);
+	semop(semd, &sb, 1);
 
 	//Opening shared memory...
-	sharmem = shmget(SHARKEY, sizeof(char*), 0);
-	if (sharmem < 0){
+	shmd = shmget(SHKEY, sizeof(char*), 0);
+	if (shmd < 0){
 		printf("Error: %s\n", strerror(errno));
 		return -1;
 	}
 
 	//Opening file for appending...
 	fd = open("semaphone.txt", O_WRONLY | O_APPEND);
-	char *line = shmat(sharmem, 0, 0);
+	char *line = shmat(shmd, 0, 0);
 
 	//Display last addition and take in new addition...
 	printf("Last addition...\n%s\n\n", line);
@@ -44,7 +44,7 @@ int start(){
 	strcpy(line, add);
 	shmdt(line);
 	sb.sem_op = 1;
-	semop(sema, *sb, 1);
+	semop(semd, *sb, 1);
 
 	return 0;
 }
