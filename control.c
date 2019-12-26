@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
 int start(){
 	if (strcmp(cmdflag, "-c") == 0) create();
    	else if (strcmp(cmdflag, "-v") == 0) view();
-	else if (strcmp(cmdflag, "-r") == 0) _remove();
+	else if (strcmp(cmdflag, "-r") == 0) removes();
 	else printf("Flag not recognized\nValid tags include:\n-c\n-v\n-r\n");
 	return 0;
 }
@@ -57,7 +57,7 @@ int create(){
     return 0;
 }
 
-int _remove(){
+int removes(){
 	//Checking semaphore...
 	semd = semget(SEMKEY, 1, 0);
 	if (semd < 0){
