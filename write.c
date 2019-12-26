@@ -44,7 +44,7 @@ int start(){
 	strcpy(line, add);
 	shmdt(line);
 	sb.sem_op = 1;
-	semop(semd, *sb, 1);
+	semop(semd, &sb, 1);
 
 	return 0;
 }
