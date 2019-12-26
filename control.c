@@ -19,11 +19,12 @@ int main(int argc, char *argv[]){
 	return 0;
 }
 
-void start(){
+int start(){
 	if (strcmp(cmdflag, "-c") == 0) create();
    	else if (strcmp(cmdflag, "-v") == 0) view();
 	else if (strcmp(cmdflag, "-r") == 0) remove();
 	else printf("Flag not recognized\nValid tags include:\n-c\n-v\n-r\n");
+	return 0;
 }
 
 int create(){
@@ -59,7 +60,7 @@ int create(){
 int remove(){
 	//Checking semaphore...
 	semd = semget(SEMKEY, 1, 0);
-	if (semd < -1){
+	if (semd < 0){
 		printf("Error: %s\n", strerror(errno));
 		return -1;
 	}
