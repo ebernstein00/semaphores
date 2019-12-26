@@ -9,9 +9,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define SEMKEY = 24001
-#define SHKEY = 24002
+#define SEMAKEY = 1;
+#define SHARKEY = 2;
 
+int start();
 int create();
 int remove();
 int view();
