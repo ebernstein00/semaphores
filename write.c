@@ -27,7 +27,6 @@ int start(){
 	}
 	printf("Trying to get in...\n");
 	semop(semd, &sb, 1);
-	printf("errcheck\n");
 
 	//Opening shared memory...
 	shmd = shmget(SHKEY, sizeof(char*), 0);
