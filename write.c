@@ -1,5 +1,11 @@
 #include "semaphore.h"
 
+union semun {
+    int val;
+    struct semid_ds *buf;
+    unsigned short  *array;
+} su;
+
 int semd; 
 int shmd; 
 int fd;

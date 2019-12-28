@@ -4,7 +4,7 @@ union semun {
     int val;
     struct semid_ds *buf;
     unsigned short  *array;
-} semu;
+} su;
 
 char cmdflag[10];
 int fd; 
@@ -36,7 +36,7 @@ int create(){
     	printf("Error: %s\n", strerror(errno));
     	return -1;
     }
-    semctl(semd, 0, SETVAL, semu);
+    semctl(semd, 0, SETVAL, su);
     printf("Semaphore created successfully...\n");
 
     //Create shared memory...
