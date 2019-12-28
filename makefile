@@ -9,5 +9,4 @@ write.o: write.c semaphore.h
 	gcc -c write.c
 
 clean:
-	rm *.exe
 	rm *.o
