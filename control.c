@@ -114,7 +114,7 @@ int view(){
 	}
 	printf("\n");
 	fclose(fptr);
-	semop(semd, &sb, 1);
+	//semop(semd, &sb, 1);
 
 	return 0;
 }
