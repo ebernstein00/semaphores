@@ -43,11 +43,11 @@ int start(){
 	char *add;
 	printf("Last addition...\n%s\n\n", line);
 	printf("Your addition...\n");
-	fgets(add, 1024, stdin);
+	fgets(&add, 1024, stdin);
 	printf("Adding \"%s\" to the story...\n", add);
 
 	//Write addition to file...
-	write(fd, add, strlen(add) + 1);
+	write(fd, add, strlen(add));
 	close(fd);
 
 	//Setting last addition...
