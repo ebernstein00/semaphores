@@ -47,7 +47,7 @@ int start(){
 	printf("Adding \"%s\" to the story...\n", add);
 
 	//Write addition to file...
-	write(fd, add, strlen(add));
+	write(fd, add, strlen(add) + 1);
 	close(fd);
 
 	//Setting last addition...
