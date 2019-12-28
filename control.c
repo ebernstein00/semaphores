@@ -78,22 +78,6 @@ int removes(){
 
 	//Displaying story...
 	view();
-	/*
-	FILE *fptr;
-	char ch;
-	scanf("semaphone.txt");
-	fptr = fopen("semaphone.txt", "r");
-	if (fptr == NULL){
-		printf("File can't be opened\n");
-		return -1;
-	}
-	ch = fgetc(fptr);
-	while (ch != EOF){
-		printf("%c", ch);
-		ch = fgetc(fptr);
-	}
-	fclose(fptr);
-	*/
 
 	//Remove shared memory...
 	shmctl(shmd, IPC_RMID, 0);
@@ -130,6 +114,7 @@ int view(){
 	}
 	printf("\n");
 	fclose(fptr);
+	semop(semd, &sb, 1);
 
 	return 0;
 }
