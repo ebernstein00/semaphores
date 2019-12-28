@@ -118,4 +118,4 @@ int view(){
 	//semop(semd, &sb, 1);
 
 	return 0;
-}//
+}
