@@ -128,6 +128,7 @@ int view(){
 		printf("%c", ch);
 		ch = fgetc(fptr);
 	}
+	printf("\n");
 	fclose(fptr);
 
 	return 0;
