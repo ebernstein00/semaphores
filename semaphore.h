@@ -15,4 +15,4 @@
 int start();
 int create();
 int removes();
-int view();
+int view();//

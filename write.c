@@ -57,4 +57,4 @@ int start(){
 	semop(semd, &sb, 1);
 
 	return 0;
-}
+}//
