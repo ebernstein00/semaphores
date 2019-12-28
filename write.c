@@ -12,6 +12,8 @@ int fd;
 struct sembuf sb;
 
 int main(){
+	sb.sem_num = 0;
+	sb.sem_op = -1;
 	start();
 	return 0;
 }
