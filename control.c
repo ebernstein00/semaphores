@@ -112,9 +112,9 @@ int removes(){
 
 int view(){
 	//Open file for reading only...
+
 	FILE *fptr;
 	char ch;
-	scanf("semaphone.txt");
 	fptr = fopen("semaphone.txt", "r");
 	if (fptr == NULL){
 		printf("File can't be opened\n");
