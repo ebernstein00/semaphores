@@ -40,10 +40,10 @@ int start(){
 	char *line = shmat(shmd, 0, 0);
 
 	//Display last addition and take in new addition...
-	char *add;
+	char add[1024];
 	printf("Last addition...\n%s\n\n", line);
 	printf("Your addition...\n");
-	fgets(&add, 1024, stdin);
+	fgets(add, 1024, stdin);
 	printf("Adding \"%s\" to the story...\n", add);
 
 	//Write addition to file...
