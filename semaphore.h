@@ -14,5 +14,5 @@
 
 int start();
 int create();
-int remove();
+int removes();
 int view();
